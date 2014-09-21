@@ -2,7 +2,8 @@ defmodule PhoenixJobsFour.PageController do
   use Phoenix.Controller
 
   def index(conn, _params) do
-    render conn, "index"
+    jobs = PhoenixJobsFour.Queries.jobs_query
+    render conn, "index", jobs: jobs
   end
 
   def not_found(conn, _params) do
