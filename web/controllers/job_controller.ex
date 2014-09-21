@@ -11,8 +11,9 @@ defmodule PhoenixJobsFour.JobController do
     render conn, "new"
   end
 
-  def save(conn, params) do
+  def create(conn, params) do
     job = %PhoenixJobsFour.Jobs{title: params["title"], description: params["description"], job_type: params["type"], job_status: params["status"]}
+    IO.inspect job
     PhoenixJobsFour.Repo.insert(job)
     redirect conn, Router.pages_path(:index)
   end
@@ -27,9 +28,13 @@ defmodule PhoenixJobsFour.JobController do
     render conn, "edit", job: job
   end
 
+  def show(conn, %{"id" => id}) do
+    job = PhoenixJobsFour.Queries.job_detail_query(id)
+    render conn, "show", job: job
+  end
+
   def update(conn, params) do
-    IO.inspect params["type"]
-    job = PhoenixJobsFour.Repo.get(PhoenixJobsFour.Jobs, params["id"])
+    job = PhoenixJobsFour.Repo.get(PhoenixJobsFour.Jobs, String.to_integer(params["id"]))
     job = %{job | title: params["title"], description: params["description"],
       job_type: params["type"], job_status: params["status"]}
     PhoenixJobsFour.Repo.update(job)

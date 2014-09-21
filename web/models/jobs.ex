@@ -3,8 +3,8 @@ defmodule PhoenixJobsFour.Jobs do
 
     schema "jobs" do
       field :title, :string
-        field :job_type, :string
-        field :description, :string
-        field :job_status, :string
+      field :job_type, :string
+      field :description, :string
+      field :job_status, :string
     end
 end

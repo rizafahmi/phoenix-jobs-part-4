@@ -1,6 +1,32 @@
-<h1>List Of Jobs</h1>
-<ul>
-<%= for job <- @jobs do %>
-  <li><%= job.title %> - <%= job.description %></li>
-<% end %>
+<div class="row">
+  <div class="col-md-4">
+    <h2>List Of Jobs</h2>
+  </div>
+  <div class="col-md-8">
+    <a href="<%= job_path(:new) %>" class="btn btn-danger pull-right">Post a new job</a>
+  </div>
+</div>
+<ul class="list-unstyled" style="">
+  <%= for job <- @jobs do %>
+  <li class="job-list">
+    <div class="row">
+      <div class="col-md-9">
+        <a href="/jobs/<%= job.id %>">
+          <span class="title"><%= job.title %></span>
+          <span class="label label-success"><%= job.job_type %></span>
+          <span class="label label-default"><%= job.job_status %></span>
+        </a>
+      </div>
+      <div class="col-md-3 buttons" style="text-align: right">
+        <form method="post" action="<%= job_path(:destroy, job.id) %>" >
+          <a href="/jobs/<%= job.id %>/edit" class="btn btn-warning btn-sm">
+            Edit</a> &nbsp;&nbsp;
+          <input type="hidden" name="_method" value="DELETE">
+          <button type="submit" class="btn btn-default btn-sm">
+            Delete</button>
+        </form>
+      </div>
+    </div>
+  </li>
+  <% end %>
 </ul>
