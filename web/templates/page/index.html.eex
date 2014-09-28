@@ -4,8 +4,12 @@
   </div>
   <div class="col-md-8" style="text-align: right">
     <a href="<%= job_path(:new) %>" class="btn btn-danger">Post a new job</a>
+    <%= if @user do %>
     <a href="<%= user_path(:new) %>" class="btn btn-success">Register</a>
     <a href="<%= user_path(:login) %>" class="">Login</a>
+    <% else %>
+    <a href="<%= user_path(:login) %>" class="">Logout</a>
+    <% end %>
   </div>
 </div>
 <ul class="list-unstyled" style="">

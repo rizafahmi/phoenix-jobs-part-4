@@ -3,7 +3,8 @@ defmodule PhoenixJobsFour.PageController do
 
   def index(conn, _params) do
     jobs = PhoenixJobsFour.Queries.jobs_query
-    render conn, "index", jobs: jobs
+    user = get_session(conn, :username)
+    render conn, "index", [jobs: jobs, user: user]
   end
 
   def not_found(conn, _params) do
