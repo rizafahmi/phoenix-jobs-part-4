@@ -1,6 +1,7 @@
 defmodule PhoenixJobsFour.Queries do
   import Ecto.Query
   alias PhoenixJobsFour.Jobs
+  alias PhoenixJobsFour.Users
   alias PhoenixJobsFour.Repo
 
   def jobs_query do
@@ -15,6 +16,15 @@ defmodule PhoenixJobsFour.Queries do
     query = from job in Jobs,
             where: job.id == ^int_id,
             select: job
+    Repo.all(query) |> List.first
+  end
+
+  def login(username, password) do
+    md5_password = Crypto.md5(password)
+    query = from user in Users,
+            where: user.username == ^username,
+            where: user.password == ^md5_password,
+            select: user
     Repo.all(query) |> List.first
   end
 end
