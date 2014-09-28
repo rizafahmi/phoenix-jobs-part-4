@@ -14,4 +14,8 @@ defmodule PhoenixJobsFour.UserController do
     redirect conn, Router.pages_path(:index)
 
   end
+
+  def login(conn, params) do
+    render conn, "login"
+  end
 end
