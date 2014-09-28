@@ -21,10 +21,11 @@ defmodule PhoenixJobsFour.UserController do
 
   def login_process(conn, params) do
     user = PhoenixJobsFour.Queries.login(params["username"], params["password"])
-    redirect conn, Router.pages_path(:index)
-    # case user do
-    #   nil -> render conn, "login"
-    #   _ -> redirect conn, Router.pages_path(:index)
-    # end
+    if user == nil do
+      render conn, "login", [message: "Username and or password was wrong"]
+    else
+      put_session(conn, :username, params["username"])
+      redirect conn, Router.pages_path(:index)
+    end
   end
 end
