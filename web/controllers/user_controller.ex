@@ -15,7 +15,16 @@ defmodule PhoenixJobsFour.UserController do
 
   end
 
-  def login(conn, params) do
+  def login(conn, _params) do
     render conn, "login"
+  end
+
+  def login_process(conn, params) do
+    user = PhoenixJobsFour.Queries.login(params["username"], params["password"])
+    redirect conn, Router.pages_path(:index)
+    # case user do
+    #   nil -> render conn, "login"
+    #   _ -> redirect conn, Router.pages_path(:index)
+    # end
   end
 end

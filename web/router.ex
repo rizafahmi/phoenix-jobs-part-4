@@ -7,6 +7,7 @@ defmodule PhoenixJobsFour.Router do
     get "/users/new", UserController, :new, as: :user
     get "/users/login", UserController, :login, as: :user
     post "/users", UserController, :create, as: :user
+    post "/users/login", UserController, :login_process, as: :user
   end
 
 end

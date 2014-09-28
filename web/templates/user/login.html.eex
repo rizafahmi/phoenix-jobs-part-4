@@ -1,5 +1,8 @@
 <h1>Login</h1>
-<form class="form-horizontal" action="/users" method="post">
+<%= if @message do %>
+<div class="alert alert-danger" role="alert"><%= @message %></div>
+<% end %>
+<form class="form-horizontal" action="/users/login" method="post">
   <div class="form-group">
     <label for="" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-6"><input class="form-control" placeholder="yourname@email.com" name="username" type="email" required="required"></div>
