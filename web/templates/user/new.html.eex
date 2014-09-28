@@ -1,0 +1,20 @@
+<h1>New User</h1>
+<form class="form-horizontal" action="/users" method="post">
+  <div class="form-group">
+    <label for="" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-6"><input class="form-control" placeholder="yourname@email.com" type="email" required="required"></div>
+  </div>
+  <div class="form-group">
+    <label for="" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-6"><input class="form-control" type="password"></div>
+  </div>
+  <div class="form-group">
+    <label for="" class="col-sm-2 control-label">Confirm Password</label>
+    <div class="col-sm-6"><input class="form-control" type="password"></div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button class="btn btn-warning" type="submit">Save</button>
+    </div>
+  </div>
+</form>
