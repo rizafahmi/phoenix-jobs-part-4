@@ -4,6 +4,7 @@ defmodule PhoenixJobsFour.PageController do
   def index(conn, _params) do
     jobs = PhoenixJobsFour.Queries.jobs_query
     user = get_session(conn, :username)
+    IO.inspect user
     render conn, "index", [jobs: jobs, user: user]
   end
 

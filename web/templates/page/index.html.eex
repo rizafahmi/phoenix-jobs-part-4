@@ -1,14 +1,19 @@
 <div class="row">
+  <div class="col-md-12">
+
+
+  </div>
   <div class="col-md-4">
     <h2>List Of Jobs</h2>
   </div>
   <div class="col-md-8" style="text-align: right">
+    <%= if @user != "" do %>
     <a href="<%= job_path(:new) %>" class="btn btn-danger">Post a new job</a>
-    <%= if @user do %>
+    <a href="<%= user_path(:logout) %>" class="">Logout</a>
+    <% else %>
+    <a href="<%= user_path(:login) %>" class="btn btn-danger">Post a new job</a>
     <a href="<%= user_path(:new) %>" class="btn btn-success">Register</a>
     <a href="<%= user_path(:login) %>" class="">Login</a>
-    <% else %>
-    <a href="<%= user_path(:login) %>" class="">Logout</a>
     <% end %>
   </div>
 </div>

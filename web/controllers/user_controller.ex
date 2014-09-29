@@ -1,6 +1,7 @@
 defmodule PhoenixJobsFour.UserController do
   use Phoenix.Controller
   alias PhoenixJobsFour.Router
+  alias Phoenix.Controller.Flash
 
   def new(conn, _params) do
     render conn, "new"
@@ -8,7 +9,6 @@ defmodule PhoenixJobsFour.UserController do
 
   def create(conn, params) do
     user = %PhoenixJobsFour.Users{username: params["username"], password: Crypto.md5(params["password"])}
-    IO.inspect user
     PhoenixJobsFour.Repo.insert(user)
 
     redirect conn, Router.pages_path(:index)
@@ -22,10 +22,21 @@ defmodule PhoenixJobsFour.UserController do
   def login_process(conn, params) do
     user = PhoenixJobsFour.Queries.login(params["username"], params["password"])
     if user == nil do
-      render conn, "login", [message: "Username and or password was wrong"]
+      conn
+      |> Flash.put(:notice, "Username and or password was wrong")
+      |> render "login"
     else
-      put_session(conn, :username, params["username"])
-      redirect conn, Router.pages_path(:index)
+      conn
+      |> Flash.put(:notice, "Login succees.")
+      |> put_session(:username, params["username"])
+      |> redirect Router.pages_path(:index)
     end
+  end
+
+  def logout(conn, _params) do
+    conn
+    |> put_session(:username, "")
+    |> Flash.put(:notice, "Logout has been succeeded.")
+    |> redirect Router.pages_path(:index)
   end
 end
