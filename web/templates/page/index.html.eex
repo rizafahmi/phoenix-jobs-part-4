@@ -29,6 +29,7 @@
         </a>
       </div>
       <div class="col-md-3 buttons" style="text-align: right">
+        <%= if @user != "" and @user == job.created_by do %>
         <form method="post" action="<%= job_path(:destroy, job.id) %>" >
           <a href="/jobs/<%= job.id %>/edit" class="btn btn-warning btn-sm">
             Edit</a> &nbsp;&nbsp;
@@ -36,6 +37,7 @@
           <button type="submit" class="btn btn-default btn-sm">
             Delete</button>
         </form>
+        <% end %>
       </div>
     </div>
   </li>
