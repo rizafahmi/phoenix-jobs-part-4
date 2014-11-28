@@ -12,7 +12,8 @@ defmodule PhoenixJobsFour.JobController do
   end
 
   def create(conn, params) do
-    job = %PhoenixJobsFour.Jobs{title: params["title"], description: params["description"], job_type: params["type"], job_status: params["status"]}
+    user = get_session(conn, :username)
+    job = %PhoenixJobsFour.Jobs{title: params["title"], description: params["description"], job_type: params["type"], job_status: params["status"], created_by: user}
     IO.inspect job
     PhoenixJobsFour.Repo.insert(job)
     redirect conn, Router.pages_path(:index)
