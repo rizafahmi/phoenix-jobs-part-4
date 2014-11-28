@@ -1,0 +1,11 @@
+{application,postgrex,
+             [{registered,[]},
+              {description,"PostgreSQL driver for Elixir.\n"},
+              {vsn,"0.6.0"},
+              {modules,['Elixir.Postgrex.BinaryUtils',
+                        'Elixir.Postgrex.Connection','Elixir.Postgrex.Error',
+                        'Elixir.Postgrex.Protocol',
+                        'Elixir.Postgrex.Protocol.Messages',
+                        'Elixir.Postgrex.Result','Elixir.Postgrex.TypeInfo',
+                        'Elixir.Postgrex.Types']},
+              {applications,[kernel,stdlib,elixir]}]}.

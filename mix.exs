@@ -3,8 +3,8 @@ defmodule PhoenixJobsFour.Mixfile do
 
   def project do
     [ app: :phoenix_jobs_four,
-      version: "0.0.1",
-      elixir: "~> 1.0.0-rc1",
+      version: "0.0.2",
+      elixir: "~> 1.1.0-dev",
       elixirc_paths: ["lib", "web"],
       deps: deps ]
   end
