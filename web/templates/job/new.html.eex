@@ -17,13 +17,23 @@
   <div class="form-group">
     <label for="type" class="col-sm-2 control-label">Job Type</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name="type" placeholder="Job Type">
+      <!-- <input type="text" class="form&#45;control" name="type" placeholder="Job Type"> -->
+      <select class="form-control" name="type" id="type" placeholder="Job Type">
+        <option value="On Site">On Site</option>
+        <option value="Remote">Remote</option>
+      </select>
     </div>
   </div>
   <div class="form-group">
     <label for="status" class="col-sm-2 control-label">Job Status</label>
     <div class="col-sm-10">
-      <input type="text" name="status" class="form-control" id="status" placeholder="Job Status">
+      <!-- <input type="text" name="status" class="form&#45;control" id="status" placeholder="Job Status"> -->
+      <select class="form-control" name="status" id="status" placeholder="Job Status">
+        <option value="Full Time">Full Time</option>
+        <option value="Part Time">Part Time</option>
+        <option value="Freelance">Freelance</option>
+      </select>
+
     </div>
   </div>
 
