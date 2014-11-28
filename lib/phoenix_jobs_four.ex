@@ -6,6 +6,7 @@ defmodule PhoenixJobsFour do
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
 
+    PhoenixJobsFour.Router.start
     children = [
       worker(PhoenixJobsFour.Repo, [])
     ]

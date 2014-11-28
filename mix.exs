@@ -25,9 +25,10 @@ defmodule PhoenixJobsFour.Mixfile do
   defp deps do
     [
       {:phoenix, "0.4.1"},
-      {:cowboy, "~> 1.0.0"},
+      {:cowboy, "1.0.0"},
       {:postgrex, "0.6.0"},
-      {:ecto, "0.2.5"}
+      {:ecto, "0.2.5"},
+      { :exrm, "0.14.2" }
     ]
   end
 end
